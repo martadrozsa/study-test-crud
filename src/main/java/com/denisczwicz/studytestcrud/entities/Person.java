@@ -1,13 +1,19 @@
 package com.denisczwicz.studytestcrud.entities;
 
+import com.sun.istack.NotNull;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
+
 
 @Data
 @Entity
+@Table(name = "tb_person")
+@AllArgsConstructor
+@NoArgsConstructor
 public class Person {
 
     @Id

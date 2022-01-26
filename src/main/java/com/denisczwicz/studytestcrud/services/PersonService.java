@@ -6,15 +6,17 @@ import java.util.List;
 
 public interface PersonService {
 
-    Long create(Person person);
+    Person insert(Person person);
 
-    List<Person> getAll();
+    List<Person> findAll();
 
-    Person getById(Long id);
+    Person findById(Long id);
 
     void update(Person dto);
 
     void updateNameById(Long id, String name);
 
     void deleteById(Long id);
+
+
 }
