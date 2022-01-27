@@ -12,9 +12,7 @@ public interface PersonService {
 
     Person findById(Long id);
 
-    void update(Person dto);
-
-    void updateNameById(Long id, String name);
+    Person update(Long id, Person dto);
 
     void deleteById(Long id);
 

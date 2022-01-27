@@ -38,22 +38,14 @@ public class PersonServiceImpl implements PersonService {
 
     @Transactional
     @Override
-    public void update(Person person) {
-        personRepository.save(person);
-
+    public Person update(Long id, Person person) {
+        Person savedPerson = personRepository.getById(id);
+        savedPerson.setName(person.getName());
+        return personRepository.save(savedPerson);
     }
 
-    @Transactional
-    @Override
-    public void updateNameById(Long id, String name) {
-
-    }
-
-    @Transactional
     @Override
     public void deleteById(Long id) {
-
+        personRepository.deleteById(id);
     }
-
-
 }

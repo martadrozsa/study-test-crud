@@ -43,19 +43,18 @@ public class PersonController {
         return ResponseEntity.created(uri).build();
     }
 
-    @PutMapping
-    public void update(@RequestBody PersonDTO personDTO) {
+    @PutMapping(value = "/{id}")
+    public ResponseEntity<PersonDTO> update(@PathVariable Long id, @RequestBody PersonDTO personDTO) {
+        Person person = personDTOMapper.mapPersonDTOToPerson(personDTO);
+        Person personUpdated = personService.update(id, person);
+        PersonDTO categoryDTOUpdated = personDTOMapper.mapPersonToPersonDTO(personUpdated);
 
+        return ResponseEntity.ok().body(categoryDTOUpdated);
     }
 
-    @PatchMapping
-    public void updateNameById(@RequestParam Long id, @RequestParam String name) {
-
+    @DeleteMapping(value = "/{id}")
+    public ResponseEntity<Void> deleteById(@PathVariable Long id) {
+        personService.deleteById(id);
+        return ResponseEntity.noContent().build();
     }
-
-    @DeleteMapping
-    public void deleteById(@RequestParam Long id) {
-
-    }
-
 }
