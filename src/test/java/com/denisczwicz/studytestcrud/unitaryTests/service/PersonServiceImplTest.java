@@ -1,26 +1,23 @@
-package com.denisczwicz.studytestcrud.integrationTests.service;
+package com.denisczwicz.studytestcrud.unitaryTests.service;
 
 import com.denisczwicz.studytestcrud.entities.Person;
 import com.denisczwicz.studytestcrud.repositories.PersonRepository;
-import com.denisczwicz.studytestcrud.services.PersonService;
 import com.denisczwicz.studytestcrud.services.impl.PersonServiceImpl;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Captor;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.verify;
 
 
-@SpringBootTest
-public class PersonServiceTest {
+@ExtendWith(SpringExtension.class)
+public class PersonServiceImplTest {
 
     @InjectMocks
     private PersonServiceImpl personService;

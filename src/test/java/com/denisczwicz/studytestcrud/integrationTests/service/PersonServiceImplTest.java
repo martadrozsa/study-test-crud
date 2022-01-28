@@ -1,22 +1,23 @@
-package com.denisczwicz.studytestcrud.integrationTests.repository;
+package com.denisczwicz.studytestcrud.integrationTests.service;
 
 import com.denisczwicz.studytestcrud.entities.Person;
 import com.denisczwicz.studytestcrud.repositories.PersonRepository;
+import com.denisczwicz.studytestcrud.services.impl.PersonServiceImpl;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.boot.test.context.SpringBootTest;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-@DataJpaTest
-public class PersonRepositoryTest {
+@SpringBootTest
+public class PersonServiceImplTest {
 
     @Autowired
-    private PersonRepository personRepository;
+    private PersonServiceImpl personService;
 
     @Test
-    @DisplayName("A pessoa foi salva pelo repositório")
+    @DisplayName("A pessoa foi salva pelo service")
     public void shouldSavePerson() {
 
         Person person = new Person();
@@ -26,7 +27,7 @@ public class PersonRepositoryTest {
         person.setCpf("123456");
         person.setAge(25);
 
-        personRepository.save(person);
+        personService.insert(person);
 
         assertThat(person.getId()).isNotNull();
     }
