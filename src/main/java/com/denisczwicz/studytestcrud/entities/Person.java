@@ -21,19 +21,19 @@ public class Person {
     private Long id;
 
     @Column
-    @NotBlank
+    //@NotBlank
     private String name;
 
     @Column
-    @NotBlank
+    //@NotBlank
     private String lastName;
 
     @Column
-    @NotBlank
+    //@NotBlank
     private String cpf;
 
     @Column
-    @NotNull
+    //@NotNull
     private Integer age;
 
 }

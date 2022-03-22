@@ -5,11 +5,10 @@ import com.denisczwicz.studytestcrud.controllers.mapper.PersonDTOMapper;
 import com.denisczwicz.studytestcrud.entities.Person;
 import com.denisczwicz.studytestcrud.services.PersonService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import java.net.URI;
 import java.util.List;
 
 @RequiredArgsConstructor
@@ -39,8 +38,7 @@ public class PersonController {
     public ResponseEntity<PersonDTO> insert(@RequestBody PersonDTO personDTO) {
         Person person = personDTOMapper.mapPersonDTOToPerson(personDTO);
         personService.insert(person);
-        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(person.getId()).toUri();
-        return ResponseEntity.created(uri).build();
+        return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
     @PutMapping(value = "/{id}")
@@ -57,4 +55,5 @@ public class PersonController {
         personService.deleteById(id);
         return ResponseEntity.noContent().build();
     }
+
 }

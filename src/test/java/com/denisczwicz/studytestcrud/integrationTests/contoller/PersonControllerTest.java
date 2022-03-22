@@ -27,8 +27,8 @@ public class PersonControllerTest {
     @Autowired
     private ObjectMapper objectMapper;
 
-    @Autowired
-    private PersonService personService;
+    //@Autowired
+    //private PersonService personService;
 
     @Test
     @DisplayName("Deve salvar a pessoa por meio do Controller")
@@ -45,6 +45,6 @@ public class PersonControllerTest {
                         .content(objectMapper.writeValueAsString(personDTO)))
                 .andDo(print())
                 .andExpect(status().isCreated());
-        
+
     }
 }
